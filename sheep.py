@@ -8,4 +8,5 @@ class Sheep():
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
     def spawn(self):
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
         pygame.draw.rect(self.x, self.y, self.rect)
