@@ -19,9 +19,6 @@ tiger_3 = Tiger(x3, y3)
 x4, y4 = 500, 600
 tiger_4 = Tiger(x4, y4)
 
-def round_values(pos, base=25):
-    return (int(math.ceil(pos[0] / base)) * base, int(math.ceil(pos[1] / base)) * base)
-
 run = True
 
 def tiger_move():
