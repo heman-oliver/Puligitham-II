@@ -19,9 +19,6 @@ tiger_3 = Tiger(x3, y3)
 x4, y4 = 500, 600
 tiger_4 = Tiger(x4, y4)
 
-def round_values(pos, base=25):
-    return (int(math.ceil(pos[0] / base)) * base, int(math.ceil(pos[1] / base)) * base)
-
 run = True
 
 def tiger_move():
@@ -38,6 +35,7 @@ def tiger_move():
             tiger_1.draw(win.screen)
             board.reset_valid_pos()
             tiger_1.selected = False
+            return True
     elif tiger_2.selected:
         print('CLICKED')
         if new_pos != None:
@@ -46,6 +44,7 @@ def tiger_move():
             tiger_2.draw(win.screen)
             board.reset_valid_pos()
             tiger_2.selected = False
+            return True
     elif tiger_3.selected:
         print('CLICKED')
         if new_pos != None:
@@ -53,6 +52,7 @@ def tiger_move():
             tiger_3.x, tiger_3.y = new_pos[0], new_pos[1]
             board.reset_valid_pos()
             tiger_3.selected = False
+            return True
     elif tiger_4.selected:
         print('CLICKED')
         if new_pos != None:
@@ -61,6 +61,9 @@ def tiger_move():
             tiger_4.draw(win.screen)
             board.reset_valid_pos()
             tiger_4.selected = False
+            return True
+
+sheep_move = True
 
 while run:
     win.fill_background(color=Color.WHITE)
@@ -78,13 +81,20 @@ while run:
             break
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
-            tiger_move()
-
+            new_pos = board.check_collision(pos)
+            if sheep_move:
+                board.add_sheep(new_pos)
+                sheep_move = False
+            else:
+                if tiger_move():
+                    sheep_move = True
 
     tiger_1.draw(win.screen)
     tiger_2.draw(win.screen)
     tiger_3.draw(win.screen)
     tiger_4.draw(win.screen)
+
+    board.draw_sheep(win.screen)
 
     win.update()
 

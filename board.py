@@ -16,7 +16,7 @@ class Board(object):
         self.left_valid_pos = [[400, 300], [325, 450], [250, 600], [175, 750], [100, 900]]
         self.left_rect_pos = [[100, 750], [100, 600], [100, 450], [100, 300]]
         self.valid_pos = self.mid_valid_pos + self.right_valid_pos + self.left_valid_pos + self.left_rect_pos + self.right_rect_pos
-
+        self.sheep = [] # List of RECTS
         self.create_rects()
 
     # CREATING RECT in THAT PLACE TO CHECK FOR COLLISION FOR FUTURE USE
@@ -55,3 +55,16 @@ class Board(object):
             if rect.collidepoint(pos):
                 return [rect.centerx, rect.centery]
         return None
+    
+    def add_sheep(self, pos):
+        if pos in self.valid_pos:
+            x = pygame.Rect(pos[0], pos[1], 40, 40)
+            x.centerx = pos[0]
+            x.centery = pos[1]
+            self.sheep.append(x)
+            self.valid_pos.remove(pos)
+
+    def draw_sheep(self, win):
+        if len(self.sheep) != None:
+            for s in self.sheep:
+                pygame.draw.rect(win, Color.GREEN, s)
