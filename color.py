@@ -9,3 +9,4 @@ class Color(object):
     YELLOW = (255, 255, 0)
     BROWN = (204,136,0)
     LIGHT_BLUE = (52, 31, 151)
+    GREY = (128, 128, 128)
