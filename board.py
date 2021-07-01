@@ -1,5 +1,6 @@
 import pygame
 from color import Color
+from sheep import Sheep
 
 class Board(object):
     def __init__(self):
@@ -58,10 +59,8 @@ class Board(object):
     
     def add_sheep(self, pos):
         if pos in self.valid_pos:
-            x = pygame.Rect(pos[0], pos[1], 40, 40)
-            x.centerx = pos[0]
-            x.centery = pos[1]
-            self.sheep.append(x)
+            sheep = Sheep(pos[0], pos[1])
+            self.sheep.append(sheep)
             self.valid_pos.remove(pos)
 
     def draw_sheep(self, win):

@@ -1,4 +1,3 @@
-import math
 import pygame
 from board import Board
 from tiger import Tiger
@@ -83,8 +82,9 @@ while run:
             pos = pygame.mouse.get_pos()
             new_pos = board.check_collision(pos)
             if sheep_move:
-                board.add_sheep(new_pos)
-                sheep_move = False
+                if new_pos != None:
+                    board.add_sheep(new_pos)
+                    sheep_move = False
             else:
                 if tiger_move():
                     sheep_move = True
