@@ -1,4 +1,3 @@
-import math
 import pygame
 from board import Board
 from tiger import Tiger
