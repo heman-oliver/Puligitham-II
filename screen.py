@@ -1,3 +1,4 @@
+# IMPORTS
 import pygame
 from color import Color
 

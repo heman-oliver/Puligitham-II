@@ -1,3 +1,4 @@
+# COLORS CLASS FOR DIFFERENT COLORS
 class Color(object):
     RED = (255, 0, 0)
     GREY = (119, 136, 153)
