@@ -3,7 +3,10 @@ import pygame
 from color import Color
 from sheep import Sheep
 
-# REPRESENTATION OF THE BOARD CLASS IN THE GAME
+# /////////////////////////////////////////////|
+# REPRESENTATION OF THE BOARD CLASS IN THE GAME|
+# /////////////////////////////////////////////|
+
 class Board(object):
     # CONTAINS VALUES FOR LINE-THICKNESS, INVISIBLE RECT SIZE, COLOR
     def __init__(self):

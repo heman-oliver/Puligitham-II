@@ -2,7 +2,13 @@
 import pygame
 from color import Color
 
+# /////////////////////////|
+# SCREEN CLASS FOR THE GAME|
+# /////////////////////////|
+
 class Screen(object):
+    
+    # CONTAINS THE ATTRIBUTES: WIDTH, HEIGHT, FONT, CLOCK
     def __init__(self):
 
         self.screen_width = 1000
@@ -15,13 +21,16 @@ class Screen(object):
         self.clock = pygame.time.Clock()
         self.set_title()
 
+     # FILLS THE BACKGROUND 
     def fill_background(self, color=Color.BLACK):
         self.screen.fill(color)
 
+    # SETTING THE TITLE IN THE SCREEN
     @staticmethod
     def set_title(title="Puligitham"):
         pygame.display.set_caption(title)
 
+    # UPDATES THE SCREEN
     @staticmethod
     def update():
         pygame.display.flip()
