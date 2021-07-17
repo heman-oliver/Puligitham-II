@@ -22,16 +22,16 @@ x4, y4 = 500, 600 # POS OF TIGER-4
 tiger_4 = Tiger(x4, y4)
 
 # CHECK FOR CLICKS
-def tiger_click():
+def tiger_click(pos):
     tiger_1.click(pos)
     tiger_2.click(pos)
     tiger_3.click(pos)
     tiger_4.click(pos)
 
 # CHECK FOR TIGER SELECTION FROM THE USER
-def tiger_move() -> bool:
+def tiger_move(pos) -> bool:
     # CHECK FOR TIGER CLICKS
-    tiger_click()
+    tiger_click(pos)
     # NEW_POS -> CENTER OF THE RECT POS
     new_pos = board.check_collision(pos)
     # CHECK FOR TIGER-1 SELECTION
@@ -39,6 +39,10 @@ def tiger_move() -> bool:
         print('CLICKED')
         if new_pos != None:
             print(new_pos)
+            clicked_pos = tiger_1.get_pos()
+            valid_moves = tiger_1.get_valid_moves(clicked_pos)
+            print(clicked_pos)
+            print(valid_moves)
             tiger_1.x, tiger_1.y = new_pos[0], new_pos[1]
             tiger_1.draw(win.screen)
             board.reset_valid_pos()
@@ -49,6 +53,10 @@ def tiger_move() -> bool:
         print('CLICKED')
         if new_pos != None:
             print(new_pos)
+            clicked_pos = tiger_2.get_pos()
+            valid_moves = tiger_2.get_valid_moves(clicked_pos)
+            print(clicked_pos)
+            print(valid_moves)
             tiger_2.x, tiger_2.y = new_pos[0], new_pos[1]
             tiger_2.draw(win.screen)
             board.reset_valid_pos()
@@ -59,6 +67,10 @@ def tiger_move() -> bool:
         print('CLICKED')
         if new_pos != None:
             print(new_pos)
+            clicked_pos = tiger_3.get_pos()
+            valid_moves = tiger_3.get_valid_moves(clicked_pos)
+            print(clicked_pos)
+            print(valid_moves)
             tiger_3.x, tiger_3.y = new_pos[0], new_pos[1]
             board.reset_valid_pos()
             tiger_3.selected = False
@@ -68,6 +80,10 @@ def tiger_move() -> bool:
         print('CLICKED')
         if new_pos != None:
             print(new_pos)
+            clicked_pos = tiger_4.get_pos()
+            valid_moves = tiger_4.get_valid_moves(clicked_pos)
+            print(clicked_pos)
+            print(valid_moves)
             tiger_4.x, tiger_4.y = new_pos[0], new_pos[1]
             tiger_4.draw(win.screen)
             board.reset_valid_pos()
@@ -112,7 +128,7 @@ while run:
             pos = pygame.mouse.get_pos()
             # THE CENTER OF THE COLLIDED POS -> new_pos
             new_pos = board.check_collision(pos)
-            # CHECKING TURN, TURN: TIGER
+            # CHECKING TURN, TURN: SHEEP
             if sheep_move:
                 # CHECK IF THE POSITION IS NOT AWAY FROM COLLISION RECT
                 if new_pos != None:
@@ -122,7 +138,7 @@ while run:
                     sheep_move = False
             # TURN : TIGER
             else:
-                if tiger_move():
+                if tiger_move(pos):
                     # CHANGING THE TURN
                     sheep_move = True
 
