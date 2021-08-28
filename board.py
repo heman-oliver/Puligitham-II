@@ -66,6 +66,11 @@ class Board(object):
             if tiger.rect == rect:
                 self.valid_pos.remove([rect.centerx, rect.centery])
                 self.create_rects()
+            else:
+                for sheep in self.sheep:
+                    if (sheep.rect == rect):
+                        self.valid_pos.remove([rect.centerx, rect.centery])
+                        self.create_rects()
 
     # CHECK FOR COLLISON FROM THE MOUSE
     def check_collision(self, pos):
@@ -77,9 +82,13 @@ class Board(object):
     # ADDING THE SHEEP TO EMPTY SHEEP LIST
     def add_sheep(self, pos):
         if pos in self.valid_pos:
-            sheep = Sheep(pos[0], pos[1])
-            self.sheep.append(sheep)
-            self.valid_pos.remove(pos)
+            for sheep in self.sheep:
+                if pos == [sheep.rect.centerx, sheep.rect.centery]:
+                    print("Invalid Move")
+            else:
+                sheep = Sheep(pos[0], pos[1])
+                self.sheep.append(sheep)
+                self.valid_pos.remove(pos)
 
     # DRAWING THE SHEEP FROM THE SHEEP LIST
     def draw_sheep(self, win):

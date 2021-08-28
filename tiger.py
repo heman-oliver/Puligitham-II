@@ -34,7 +34,7 @@ class Tiger(object):
             self.selected = True
         return [self.x, self.y]
 
-    # CREATE VALIID TIGER MOVES FOR TIGER
+    # CREATE VALIID MOVES FOR TIGER
     def get_valid_moves(self, pos: list) -> list:
         # ---------------------------------------------------
         # POINTS CALCULATION DONE IN THE GRAPHING CALCULATOR|
@@ -77,7 +77,7 @@ class Tiger(object):
             return [[675, 450], [900, 300]]
         elif pos == [100, 300]: # POINT H
             return [[100, 450], [400, 300]]
-        elif pos == [100, 300]: # POINT Z
+        elif pos == [400, 300]: # POINT Z
             return [[325, 450], [500, 100], [500, 300], [100, 300]]
         elif pos == [500, 300]: # POINT Q
             return [[400, 300], [500, 450], [600, 300], [500, 100]]

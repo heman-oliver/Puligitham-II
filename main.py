@@ -43,11 +43,12 @@ def tiger_move(pos) -> bool:
             valid_moves = tiger_1.get_valid_moves(clicked_pos)
             print(clicked_pos)
             print(valid_moves)
-            tiger_1.x, tiger_1.y = new_pos[0], new_pos[1]
-            tiger_1.draw(win.screen)
-            board.reset_valid_pos()
-            tiger_1.selected = False
-            return True
+            if (new_pos in valid_moves):
+                tiger_1.x, tiger_1.y = new_pos[0], new_pos[1]
+                tiger_1.draw(win.screen)
+                board.reset_valid_pos()
+                tiger_1.selected = False
+                return True
     # CHECK FOR TIGER-2 SELECTION
     elif tiger_2.selected:
         print('CLICKED')
@@ -57,11 +58,12 @@ def tiger_move(pos) -> bool:
             valid_moves = tiger_2.get_valid_moves(clicked_pos)
             print(clicked_pos)
             print(valid_moves)
-            tiger_2.x, tiger_2.y = new_pos[0], new_pos[1]
-            tiger_2.draw(win.screen)
-            board.reset_valid_pos()
-            tiger_2.selected = False
-            return True
+            if (new_pos in valid_moves):
+                tiger_2.x, tiger_2.y = new_pos[0], new_pos[1]
+                tiger_2.draw(win.screen)
+                board.reset_valid_pos()
+                tiger_2.selected = False
+                return True
     # CHECK FOR TIGER-3 SELECTION
     elif tiger_3.selected:
         print('CLICKED')
@@ -71,10 +73,11 @@ def tiger_move(pos) -> bool:
             valid_moves = tiger_3.get_valid_moves(clicked_pos)
             print(clicked_pos)
             print(valid_moves)
-            tiger_3.x, tiger_3.y = new_pos[0], new_pos[1]
-            board.reset_valid_pos()
-            tiger_3.selected = False
-            return True
+            if (new_pos in valid_moves):
+                tiger_3.x, tiger_3.y = new_pos[0], new_pos[1]
+                board.reset_valid_pos()
+                tiger_3.selected = False
+                return True
     # CHECK FOR TIGER-4 SELECTION
     elif tiger_4.selected:
         print('CLICKED')
@@ -84,11 +87,12 @@ def tiger_move(pos) -> bool:
             valid_moves = tiger_4.get_valid_moves(clicked_pos)
             print(clicked_pos)
             print(valid_moves)
-            tiger_4.x, tiger_4.y = new_pos[0], new_pos[1]
-            tiger_4.draw(win.screen)
-            board.reset_valid_pos()
-            tiger_4.selected = False
-            return True
+            if (new_pos in valid_moves):
+                tiger_4.x, tiger_4.y = new_pos[0], new_pos[1]
+                tiger_4.draw(win.screen)
+                board.reset_valid_pos()
+                tiger_4.selected = False
+                return True
 
 # TURN
 sheep_move = True
@@ -124,7 +128,7 @@ while run:
             break
         # MOUSE BUTTON PRESS
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            # pos : TUPLE -> THE CLICKEd POINT OF THE MOUSE
+            # pos : TUPLE -> THE CLICKED POINT OF THE MOUSE
             pos = pygame.mouse.get_pos()
             # THE CENTER OF THE COLLIDED POS -> new_pos
             new_pos = board.check_collision(pos)
